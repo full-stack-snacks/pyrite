@@ -7,8 +7,8 @@
 
     <h2>Multiple "Observers"</h2>
     <p>I'm paying attention to click count: <span id="click-count-1"></span></p>
-<!--    <py-button label="click me" pys-onClick="click_handler" />-->
-    <button id="click-btn" class="bg-blue-300 px-2 py-1 rounded" pys-onClick="click_handler">click me</button>
+    <button id="click-btn-1" class="bg-blue-300 px-2 py-1 rounded" pys-onClick="click_handler">+1</button>
+    <button id="click-btn-10" class="bg-blue-300 px-2 py-1 rounded" pys-onClick="click_handler">+10</button>
 
     <p>I'm paying attention to click count too: <span id="click-count-2"></span></p>
 
@@ -53,7 +53,13 @@
 
 
     def click_handler(event):
-      setState("count", state["count"] + 1)
+
+      amt = 1
+
+      if event.target.id == "click-btn-10":
+        amt = 10
+
+      setState("count", state["count"] + amt)
 
     render()
 
